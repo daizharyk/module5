@@ -1,0 +1,10 @@
+{
+  "users": [
+    { "name": "Adam", "age": 22 },
+    { "name": "Dan", "age": 11 },
+    { "name": "Sam", "age": 44 },
+    { "name": "Karl", "age": 66 },
+    { "name": "Kent", "age": 22 },
+    { "name": "Aman", "age": 99 }
+  ]
+}
