@@ -55,3 +55,6 @@ eventEmitter.on("addText", (text) => {
 });
 
 eventEmitter.emit("addText", "Example text to be appended to the file.");
+
+
+
