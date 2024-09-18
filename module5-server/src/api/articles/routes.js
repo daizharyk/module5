@@ -1,11 +1,9 @@
 const { Router } = require("express");
+const { getAllArticles, creatNewArticle } = require("./controller");
 const router = Router();
 
-router.get("/", (req, res) => {
-  res.send("articles");
-});
-router.post("/", (req, res) => {
-  res.send("post new article");
-});
+router.get("/", getAllArticles);
+router.post("/", creatNewArticle);
+
 
 module.exports = router;
