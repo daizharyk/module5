@@ -12,7 +12,8 @@ module.exports = {
   creatNewArticle: (req, res, next) => {
     try {
       let user = req.user;
-      let newArticle = articleService.creatNewArticle(user);
+      let data = req.body;
+      let newArticle = articleService.creatNewArticle(user, data);
       res.send(newArticle);
     } catch (error) {
       next(error);

@@ -2,8 +2,10 @@ const express = require("express");
 const errorHandler = require("../src/infrastructure/errorHandle.js");
 const app = express();
 const api = require("./api/routes");
+
 const PORT = 8080;
 
+app.use(express.json());
 // const logger = (req, res, next) => {
 //   console.log("Logger working");
 //   next();

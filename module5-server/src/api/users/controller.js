@@ -11,7 +11,9 @@ module.exports = {
   },
   creatNewUser: (req, res, next) => {
     try {
-      let newUser = userService.creatNewUser();
+      let user = req.user;
+      let data = req.body;
+      let newUser = userService.creatNewUser(user , data);
       res.send(newUser);
     } catch (error) {
       next(error);

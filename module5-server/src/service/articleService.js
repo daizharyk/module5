@@ -1,13 +1,13 @@
 const NotImplementedError = require("../infrastructure/errors/NotImplementedError");
 
-
 module.exports = {
   getAllArticles: () => {
     throw new NotImplementedError("Not inplemented");
     return "All articles from service";
   },
-  creatNewArticle: (user) => {
-    throw new NotImplementedError("Not inplemented");
-    return "Creat article from service by" +    user;
+  creatNewArticle: (user, articledata) => {
+    // throw new NotImplementedError("Not inplemented");
+    const { name, text } = articledata || {};
+    return `Create article with name "${name}" and text "${text}" from service by  ${user}`;
   },
 };
