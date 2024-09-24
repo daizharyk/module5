@@ -2,7 +2,7 @@ const { User } = require("../database/models");
 module.exports = {
   createUser: async (user) => {
     const newUser = new User(user);
-    const result = await User.save();
+    const result = await newUser.save();
     return result;
   },
   findAllUser: async () => {
@@ -20,6 +20,6 @@ module.exports = {
     return updateUser;
   },
   removeUserForce: async (userId) => {
-    await User.findByIdAndRemove(userId);
+    await User.findByIdAndDelete(userId);
   },
 };

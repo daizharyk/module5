@@ -24,6 +24,6 @@ module.exports = {
     await Article.findByIdAndUpdate(articleId, { isDeleted: true });
   },
   removeArticleForce: async (articleId) => {
-    await Article.findByIdAndRemove(articleId);
+    await Article.findByIdAndDelete(articleId);
   },
 };
