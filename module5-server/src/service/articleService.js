@@ -1,30 +1,29 @@
-
-const articlesRepository = require("../repository/atyiclesRepository.js");
+const articleRepository = require("../repository/articleRepository.js");
 module.exports = {
   getAllArticles: async () => {
-    const articles = await articlesRepository.findAllArticles();
+    const articles = await articleRepository.findAllArticles();
     return articles;
   },
   findArticle: async (articleId) => {
-    const article = await articlesRepository.findArticle(articleId);
+    const article = await articleRepository.findArticle(articleId);
     return article;
   },
   creatNewArticle: async (user, articledata) => {
-    const newArticle = await articlesRepository.createArticle(articledata);
+    const newArticle = await articleRepository.createArticle(articledata);
     return newArticle;
   },
   updateArticle: async (articleId, data) => {
-    const updateArticle = await articlesRepository.updateArticle(
+    const updateArticle = await articleRepository.updateArticle(
       articleId,
       data
     );
     return updateArticle;
   },
   removeArticle: async (articleId) => {
-    await articlesRepository.removeArticle(articleId);
+    await articleRepository.removeArticle(articleId);
   },
   removeArticleForce: async (articleId) => {
-    await articlesRepository.removeArticleForce(articleId);
+    await articleRepository.removeArticleForce(articleId);
   },
- 
 };
+

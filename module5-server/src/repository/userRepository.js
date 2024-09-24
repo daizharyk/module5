@@ -3,7 +3,7 @@ module.exports = {
   createUser: async (user) => {
     const newUser = new User(user);
     const result = await newUser.save();
-    return result;
+    return { id: result.id, name: result.name, email: result.email };
   },
   findAllUser: async () => {
     const users = User.find({});
@@ -11,6 +11,13 @@ module.exports = {
   },
   findUser: async (userId) => {
     const user = await User.findById(userId);
+    return user;
+  },
+  findUserByEmail: async (email) => {
+    const user = await User.findOne({
+      email: email,
+      isDeleted: { $ne: true},
+    });
     return user;
   },
   updateUser: async (userId, data) => {
