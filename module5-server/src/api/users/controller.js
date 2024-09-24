@@ -11,9 +11,8 @@ module.exports = {
   },
   registerUser: async (req, res, next) => {
     try {
-      const user = req.user;
       const data = req.body;
-      const newUser = await userService.createUser(user,data);
+      const newUser = await userService.createUser(data);
       res.send(newUser);
     } catch (error) {
       next(error);

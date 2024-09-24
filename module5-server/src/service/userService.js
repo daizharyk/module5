@@ -6,12 +6,12 @@ module.exports = {
     const allUsers = await userRepository.findAllUser();
     return allUsers;
   },
-  createUser: async (user, userData) => {
+  createUser: async ( userData) => {
     const existingUser = await userRepository.findUserByEmail(userData.email);
     if (existingUser) {
       throw new ExistingEntityError("User with this email already exist");
     }
-    const newUser = await userRepository.createUser(userData , user);
+    const newUser = await userRepository.createUser(userData);
     return newUser;
   },
   findUser: async (userId) => {
