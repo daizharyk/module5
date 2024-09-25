@@ -6,3 +6,4 @@ class ExistingEntityError extends Error {
 
 module.exports = ExistingEntityError;
 
+
