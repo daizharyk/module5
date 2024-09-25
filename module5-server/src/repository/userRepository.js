@@ -10,13 +10,16 @@ module.exports = {
     return users;
   },
   findUser: async (userId) => {
-    const user = await User.findById(userId);
+    const user = await User.findOne({
+      _id: userId,
+      isDeleted: { $ne: true },
+    }).select("-password");
     return user;
   },
   findUserByEmail: async (email) => {
     const user = await User.findOne({
       email: email,
-      isDeleted: { $ne: true},
+      isDeleted: { $ne: true },
     });
     return user;
   },
