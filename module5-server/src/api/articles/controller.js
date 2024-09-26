@@ -1,4 +1,3 @@
-
 const articleService = require("../../service/articleService");
 
 module.exports = {
@@ -22,10 +21,19 @@ module.exports = {
   creatNewArticle: async (req, res, next) => {
     try {
       const user = req.user;
-      const data = req.body;
+      const data = { ...req.body, user: user._id };
 
-      const article = await articleService.creatNewArticle(user, data);
+      const article = await articleService.creatNewArticle(data);
       res.send(article);
+    } catch (error) {
+      next(error);
+    }
+  },
+  getMyArticles: async (req, res, next) => {
+    try {
+      const user = req.user;
+      const articles = await articleService.getMyArticles(user._id);
+      res.send(articles);
     } catch (error) {
       next(error);
     }
@@ -33,8 +41,13 @@ module.exports = {
   updateArticle: async (req, res, next) => {
     try {
       const articleId = req.params.id;
+      const user = req.user;
       const data = req.body;
-      const updateArticle = await articleService.updateArticle(articleId, data);
+      const updateArticle = await articleService.updateArticle(
+        articleId,
+        data,
+        user._id
+      );
       res.send(updateArticle);
     } catch (error) {
       next(error);
@@ -43,7 +56,8 @@ module.exports = {
   removeArticle: async (req, res, next) => {
     try {
       const articleId = req.params.id;
-      await articleService.removeArticle(articleId);
+      const user = req.user;
+      await articleService.removeArticle(user._id, articleId);
       res.send("Article deleted!");
     } catch (error) {
       next(error);
@@ -52,7 +66,8 @@ module.exports = {
   removeArticleForce: async (req, res, next) => {
     try {
       const articleId = req.params.id;
-      await articleService.removeArticleForce(articleId);
+      const user = req.user;
+      await articleService.removeArticleForce(user._id, articleId);
       res.send("Article deleted!");
     } catch (error) {
       next(error);

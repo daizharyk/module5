@@ -14,6 +14,7 @@ const articleSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   },
   {
     timestamps: true,
@@ -21,3 +22,4 @@ const articleSchema = mongoose.Schema(
 );
 
 module.exports = mongoose.model("Article", articleSchema);
+

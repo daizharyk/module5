@@ -1,5 +1,6 @@
 const { Article } = require("../database/models");
 
+
 module.exports = {
   createArticle: async (artilce) => {
     const newArticle = new Article(artilce);
@@ -12,6 +13,22 @@ module.exports = {
   },
   findArticle: async (articleId) => {
     const article = await Article.findById(articleId);
+    return article;
+  },
+
+  findUsersArticles: async (userId) => {
+    const articles = await Article.findOne({
+      user: userId,
+      isDeleted: { $ne: true },
+    });
+    return articles;
+  },
+  findUsersArticle: async (articleId, userId) => {
+    const article = await Article.findOne({
+      _id: articleId,
+      user: userId,
+      isDeleted: { $ne: true },
+    });
     return article;
   },
   updateArticle: async (articleId, data) => {
