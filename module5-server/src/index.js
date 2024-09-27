@@ -7,7 +7,7 @@ const api = require("./api/routes");
 const database = require("./database/index.js");
 const { auth } = require("./middlewares/auth.js");
 
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
 database();
