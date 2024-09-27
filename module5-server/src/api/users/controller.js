@@ -27,6 +27,15 @@ module.exports = {
       next(error);
     }
   },
+  getMe: async (req, res, next) => {
+    try {
+      const user = req.user;
+      const me = await userService.findUserWithArticles(user._id);
+      res.send(me);
+    } catch (error) {
+      next(error);
+    }
+  },
   updateUser: async (req, res, next) => {
     try {
       const userId = req.params.id;
@@ -56,3 +65,5 @@ module.exports = {
     }
   },
 };
+
+

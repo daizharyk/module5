@@ -20,6 +20,10 @@ module.exports = {
     const user = await userRepository.findUser(userId);
     return user;
   },
+  findUserWithArticles: async (userId) => {
+    const user = await userRepository.findUserWithArticles(userId);
+    return user;
+  },
   updateUser: async (userId, data) => {
     const updatedUser = await userRepository.updateUser(userId, data);
     return updatedUser;
